@@ -24,8 +24,13 @@ class FirstViewController: UIViewController {
 
     @IBAction func baseClick(_ sender: Any) {
 //        BaseRequestController BasaCtr = BaseRequestController();
-        let BaseCtr = BaseRequestController();
-        self.navigationController?.pushViewController(BaseCtr , animated: true);
+//        let BaseCtr = BaseRequestController();
+//        self.navigationController?.pushViewController(BaseCtr , animated: true);
+        
+        let str = "{\"username\":\"张三\",\"age\":1}";
+        
+        let user = User(JSONString: str)
+        print("user=\(user)");
         
     }
 

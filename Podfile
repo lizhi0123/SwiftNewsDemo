@@ -7,7 +7,8 @@ target 'AlamofireDemo' do
 
   # Pods for AlamofireDemo
    pod 'Alamofire', '~> 4.3.0'
-   pod 'SwiftyJSON', '~> 3.1.4'
+#   pod 'SwiftyJSON', '~> 3.1.4'
+   pod 'ObjectMapper', '~> 2.2.3'
 
   target 'AlamofireDemoTests' do
     inherit! :search_paths
