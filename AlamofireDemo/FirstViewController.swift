@@ -19,7 +19,15 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: ------  Click Method --------
 
+    @IBAction func baseClick(_ sender: Any) {
+//        BaseRequestController BasaCtr = BaseRequestController();
+        let BaseCtr = BaseRequestController();
+        self.navigationController?.pushViewController(BaseCtr , animated: true);
+        
+    }
 
 }
 
