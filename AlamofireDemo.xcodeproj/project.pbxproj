@@ -11,6 +11,8 @@
 		0E1082F0F309AE6ECB35FA43 /* Pods_AlamofireDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EDB5B68FEB0E1F6914442A5 /* Pods_AlamofireDemo.framework */; };
 		9D651A6D1E7FD40E002A8809 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D651A6C1E7FD40E002A8809 /* User.swift */; };
 		9D651A6F1E7FD597002A8809 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D651A6E1E7FD597002A8809 /* Temperature.swift */; };
+		9D81A9A11E8098C7005BABAE /* APITop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81A9A01E8098C7005BABAE /* APITop.swift */; };
+		9D81A9A31E809952005BABAE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81A9A21E809952005BABAE /* API.swift */; };
 		9DB792001E7F7B61003DAB2E /* BaseRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB791FE1E7F7B61003DAB2E /* BaseRequestController.swift */; };
 		9DB792011E7F7B61003DAB2E /* BaseRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB791FF1E7F7B61003DAB2E /* BaseRequestController.xib */; };
 		9DFCC1511E7F6F43003E1FAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCC1501E7F6F43003E1FAA /* AppDelegate.swift */; };
@@ -51,6 +53,8 @@
 		9A1F423388B1B1A04163D4DC /* Pods-AlamofireDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireDemoTests/Pods-AlamofireDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D651A6C1E7FD40E002A8809 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9D651A6E1E7FD597002A8809 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		9D81A9A01E8098C7005BABAE /* APITop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITop.swift; sourceTree = "<group>"; };
+		9D81A9A21E809952005BABAE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9DB791FE1E7F7B61003DAB2E /* BaseRequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequestController.swift; sourceTree = "<group>"; };
 		9DB791FF1E7F7B61003DAB2E /* BaseRequestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseRequestController.xib; sourceTree = "<group>"; };
 		9DFCC14D1E7F6F43003E1FAA /* AlamofireDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlamofireDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +159,8 @@
 				9DB791FF1E7F7B61003DAB2E /* BaseRequestController.xib */,
 				9D651A6C1E7FD40E002A8809 /* User.swift */,
 				9D651A6E1E7FD597002A8809 /* Temperature.swift */,
+				9D81A9A01E8098C7005BABAE /* APITop.swift */,
+				9D81A9A21E809952005BABAE /* API.swift */,
 			);
 			path = AlamofireDemo;
 			sourceTree = "<group>";
@@ -466,7 +472,9 @@
 				9DFCC1511E7F6F43003E1FAA /* AppDelegate.swift in Sources */,
 				9DB792001E7F7B61003DAB2E /* BaseRequestController.swift in Sources */,
 				9D651A6F1E7FD597002A8809 /* Temperature.swift in Sources */,
+				9D81A9A11E8098C7005BABAE /* APITop.swift in Sources */,
 				9DFCC1531E7F6F43003E1FAA /* FirstViewController.swift in Sources */,
+				9D81A9A31E809952005BABAE /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +654,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09133B867E405B2298E4CCED /* Pods-AlamofireDemoTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = D2YB7AB988;
 				INFOPLIST_FILE = AlamofireDemoTests/Info.plist;
@@ -662,7 +669,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A1F423388B1B1A04163D4DC /* Pods-AlamofireDemoTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = D2YB7AB988;
 				INFOPLIST_FILE = AlamofireDemoTests/Info.plist;
@@ -678,7 +684,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D0068DD4A79C704454A7720 /* Pods-AlamofireDemoUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = D2YB7AB988;
 				INFOPLIST_FILE = AlamofireDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -693,7 +698,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DDEB7197993927E0C3B4E3DD /* Pods-AlamofireDemoUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = D2YB7AB988;
 				INFOPLIST_FILE = AlamofireDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

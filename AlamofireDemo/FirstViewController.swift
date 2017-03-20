@@ -9,9 +9,11 @@
 import UIKit
 
 class FirstViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestTop();
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -33,6 +35,18 @@ class FirstViewController: UIViewController {
         print("user=\(user)");
         
     }
+    
 
+}
+
+
+//MARK: ------------ private method --------------
+
+extension FirstViewController{
+    
+    fileprivate func requestTop(){
+        
+    }
+    
 }
 
