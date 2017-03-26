@@ -14,11 +14,11 @@ import UIKit
 //        let encoding:ParameterEncoding! = URLEncoding.default;
 //        let head = HTTPHeaders;
 
-Alamofire.request(url).responseString { (resultString) in
-    
-    print("resultString=\(resultString)");
-    
-}
+//Alamofire.request(url).responseString { (resultString) in
+//    
+//    print("resultString=\(resultString)");
+//    
+//}
 
 class APITop: NSObject {
 

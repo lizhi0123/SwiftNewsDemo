@@ -8,6 +8,9 @@
 
 import UIKit
 
+let appkey = "f1db1cefce44c93b2549b592a7fe6039";
+let baseUrl  = "http://v.juhe.cn/toutiao/index"
+
 
 enum House: String {
     case TopType = "top"
@@ -21,9 +24,17 @@ enum House: String {
 
 class API: NSObject {
     
-    let appkey = "f1db1cefce44c93b2549b592a7fe6039";
-    private let baseUrl :String = "http://v.juhe.cn/toutiao/index?"
-//    let BaseUrl:String = "http://v.juhe.cn/toutiao/index?type=top&key=\(appkey)";
-    let topUrl:String =
+   
+    let topUrlStr = House.TopType
+    let topUrl:String ;
+    
+   
+    
+    override init() {
+//         let topUrl:String = baseUrl + topUrlStr;
+         topUrl = "\(baseUrl)?type=\(topUrlStr)&key=\(appkey)";
+        print(topUrl);
+    }
+    
 
 }
