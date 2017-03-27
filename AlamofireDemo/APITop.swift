@@ -22,6 +22,7 @@ import Alamofire
 //}
 
 typealias APITopCallBack = (_ responseString:String) -> Void;
+typealias APITopFailCallBack = (_ respongFailString:String) -> Void;
 
 class APITop: NSObject {
 
@@ -46,19 +47,29 @@ class APITop: NSObject {
 //MARK: ------  request  --------
 extension APITop{
     
-    public func  requestTop(callback:@escaping APITopCallBack){
+    public func  requestTop(callback:@escaping APITopCallBack, failCallBack:@escaping APITopFailCallBack){
         
         
         
-        Alamofire.request(topUrl).responseString { (resultString) in
+        Alamofire.request(topUrl).responseString { (response) in
             
-            print("resultString=\(resultString)");
+            print("resultString=\(response)");
+            if(response.result.isSuccess){
+                
+                let reusultData = response.data;
+                let resultStr:String! = String(data: reusultData!, encoding: .utf8);
+                //            let resultStr:String = resultString;
+                
+                callback(resultStr);
+                
+            }else{
+                let error = response.error.debugDescription;
+                
+                failCallBack(error);
+            }
             
-            let reusultData = resultString.data;
-            let resultStr:String! = String(data: reusultData!, encoding: .utf8);
-//            let resultStr:String = resultString;
             
-            callback(resultStr);
+          
             
         }
         

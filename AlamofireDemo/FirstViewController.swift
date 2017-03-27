@@ -38,9 +38,14 @@ class FirstViewController: UIViewController {
         let apiTop = APITop();
         
 //        apiTop.requestTop();
-        apiTop.requestTop { (resultStr) in
-            print("resultStr=\(resultStr)");
-        }
+//        apiTop.requestTop { (resultStr) in
+//            print("resultStr=\(resultStr)");
+//        }
+        apiTop.requestTop(callback: { (responseSuccss) in
+            print(responseSuccss);
+        }, failCallBack: { (responseFail) in
+            print(responseFail);
+        });
     }
 
     
