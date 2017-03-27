@@ -24,17 +24,25 @@ class FirstViewController: UIViewController {
     
     //MARK: ------  Click Method --------
 
-    @IBAction func baseClick(_ sender: Any) {
-//        BaseRequestController BasaCtr = BaseRequestController();
-//        let BaseCtr = BaseRequestController();
-//        self.navigationController?.pushViewController(BaseCtr , animated: true);
+    @IBAction func ButtonClick(_ sender: Any) {
         
-        let str = "{\"username\":\"张三\",\"age\":1}";
+        let str1 = "\"1\"";
+        print(str1);
         
-        let user = User(JSONString: str)
-        print("user=\(user)");
         
+//        let str = "{\"username\":\"张三\",\"age\":1}";
+//        
+//        let user = User(JSONString: str)
+//        print("user=\(user)");
+        
+        let apiTop = APITop();
+        
+//        apiTop.requestTop();
+        apiTop.requestTop { (resultStr) in
+            print("resultStr=\(resultStr)");
+        }
     }
+
     
 
 }
