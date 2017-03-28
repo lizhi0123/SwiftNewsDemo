@@ -8,36 +8,17 @@
 
 import UIKit
 import Alamofire
+//import ObjectMapper
 
 
 
-//        let method:HTTPMethod! = HTTPMethod.get;
-//        let encoding:ParameterEncoding! = URLEncoding.default;
-//        let head = HTTPHeaders;
+typealias APITopCallBack = (_ responseNewsModel:NewsModel) -> Void;
 
-//Alamofire.request(url).responseString { (resultString) in
-//    
-//    print("resultString=\(resultString)");
-//    
-//}
-
-typealias APITopCallBack = (_ responseString:String) -> Void;
-typealias APITopFailCallBack = (_ respongFailString:String) -> Void;
 
 class APITop: NSObject {
-
-    let topUrlStr = House.TopType
-    
-    let topUrl:String ;
-    
-    
     
     override init() {
-        //         let topUrl:String = baseUrl + topUrlStr;
-        topUrl = "\(baseUrl)?type=\(topUrlStr)&key=\(appkey)";
-        print(topUrl);
-        
-        
+
     }
     
   
@@ -47,30 +28,39 @@ class APITop: NSObject {
 //MARK: ------  request  --------
 extension APITop{
     
-    public func  requestTop(callback:@escaping APITopCallBack, failCallBack:@escaping APITopFailCallBack){
+   class func  requestTop(callback:@escaping APITopCallBack, failCallBack:@escaping APITopFailCallBack){
         
-        
-        
+    let topUrlStr = House.TopType;
+    
+//    let topUrl:String ;
+   let topUrl = "\(baseUrl)?type=\(topUrlStr)&key=\(appkey)";
+    
         Alamofire.request(topUrl).responseString { (response) in
             
-            print("resultString=\(response)");
+//            print("resultString=\(response)");
             if(response.result.isSuccess){
                 
                 let reusultData = response.data;
+                
+                
+//                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:decryptObject options:NSJSONWritingPrettyPrinted error:nil ];
+//                NSString *jsonstr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                
+                
                 let resultStr:String! = String(data: reusultData!, encoding: .utf8);
                 //            let resultStr:String = resultString;
                 
-                callback(resultStr);
+                let newsResult:NewsModel! = NewsModel(JSONString: resultStr);
+                print(newsResult) ;
+                
+                callback(newsResult);
                 
             }else{
                 let error = response.error.debugDescription;
                 
                 failCallBack(error);
             }
-            
-            
-          
-            
+
         }
         
     }

@@ -11,6 +11,8 @@ import UIKit
 let appkey = "f1db1cefce44c93b2549b592a7fe6039";
 let baseUrl  = "http://v.juhe.cn/toutiao/index"
 
+typealias APITopFailCallBack = (_ respongFailString:String) -> Void;
+
 
 enum House: String {
     case TopType = "top"
