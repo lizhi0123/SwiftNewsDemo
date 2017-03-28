@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import PKHUD
+
 
 class FirstViewController: UIViewController {
     
@@ -15,6 +17,9 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "今日头条";
+        
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = false
 //        requestTop();
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -43,6 +48,7 @@ class FirstViewController: UIViewController {
 extension FirstViewController{
     
     fileprivate func requestTop(){
+        /*
         let activityview = UIActivityIndicatorView(frame: CGRect.init(x: 100, y: 100, width: 50, height: 50));
         self.view.addSubview(activityview)
         
@@ -56,14 +62,26 @@ extension FirstViewController{
         activityview.startAnimating()
         
         activityview.tag = 1000
+        */
+        
+//        PKHUD.sharedHUD.contentView = self.view;
+        HUD.show(.labeledProgress(title: "title", subtitle: "subtitle"))
         
         APITop.requestTop(callback: { (responseNewsModel:NewsModel) in
             
             print(responseNewsModel.reason ?? "success");
-            activityview.stopAnimating();
+            
+//            PKHUD.sharedHUD.hide();
+            HUD.hide();
+            HUD.flash(HUDContentType.label("请求成功"));
+            
+            
+//            activityview.stopAnimating();
         }, failCallBack: { (responseFail) in
             print(responseFail);
-            activityview.stopAnimating();
+//            activityview.stopAnimating();
+            HUD.hide();
+            HUD.flash(HUDContentType.label("请求失败"));
         });
         let a :String = "1";
        
