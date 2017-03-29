@@ -36,7 +36,7 @@ class NewsModel: Mappable {
 class NewsResultModel: Mappable {
     
     var stat:String?
-    var data:[NewsDatailModel]?
+    var newsDatailList:[NewsDatailModel]?
     
    required init?(map: Map) {
         
@@ -49,7 +49,7 @@ class NewsResultModel: Mappable {
         "data":[
         */
         stat <- map["stat"]
-        data <- map["data"]
+        newsDatailList <- map["data"]
     }
 }
 

@@ -10,6 +10,7 @@ target 'AlamofireDemo' do
 #   pod 'SwiftyJSON', '~> 3.1.4'
    pod 'ObjectMapper', '~> 2.2.3'
    pod 'PKHUD', '~> 4.2.0'
+   pod 'Kingfisher', '~> 3.6.0'
 
   target 'AlamofireDemoTests' do
     inherit! :search_paths

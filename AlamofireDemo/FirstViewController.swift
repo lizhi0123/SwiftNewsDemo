@@ -8,11 +8,18 @@
 
 import UIKit
 import PKHUD
+import Kingfisher
 
 
 class FirstViewController: UIViewController {
     
+    
+     let tableviewID:String! = "firstTableviewID";
+    var newsListArr = [NewsDatailModel]();
+    var currentPage:Int = 0 ;
 
+    @IBOutlet weak var mainTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +27,12 @@ class FirstViewController: UIViewController {
         
         HUD.dimsBackground = false
         HUD.allowsInteraction = false
+        
+        initMainTable();
+        
+        requestTop();
+        
+        
 //        requestTop();
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -29,17 +42,6 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: ------  Click Method --------
-
-    @IBAction func ButtonClick(_ sender: Any) {
-        
-        let str1 = "\"1\"";
-        print(str1);
-        
-        requestTop();
-        
-      
-    }
 }
 
 
@@ -48,49 +50,90 @@ class FirstViewController: UIViewController {
 extension FirstViewController{
     
     fileprivate func requestTop(){
-        /*
-        let activityview = UIActivityIndicatorView(frame: CGRect.init(x: 100, y: 100, width: 50, height: 50));
-        self.view.addSubview(activityview)
         
-        activityview.backgroundColor = UIColor.yellow;
-        activityview.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge;
-        activityview.color = UIColor.red;
-        activityview.center = self.view.center;
-        
-        // 停止转圈圈时，隐藏
-        activityview.hidesWhenStopped = true
-        activityview.startAnimating()
-        
-        activityview.tag = 1000
-        */
-        
-//        PKHUD.sharedHUD.contentView = self.view;
-        HUD.show(.labeledProgress(title: "title", subtitle: "subtitle"))
+        HUD.show(.labeledProgress(title: nil, subtitle: "正在加载..."))
         
         APITop.requestTop(callback: { (responseNewsModel:NewsModel) in
             
+            let stat:String = responseNewsModel.result!.stat!;
+            
+            self.currentPage = Int(stat) ?? 0 ;
+            
             print(responseNewsModel.reason ?? "success");
             
-//            PKHUD.sharedHUD.hide();
+            let newsResult:NewsResultModel = responseNewsModel.result!;
+            
+            self.newsListArr = newsResult.newsDatailList!;
+            print(self.newsListArr);
+            self.mainTable.reloadData();
+            
             HUD.hide();
-            HUD.flash(HUDContentType.label("请求成功"));
             
-            
-//            activityview.stopAnimating();
         }, failCallBack: { (responseFail) in
             print(responseFail);
-//            activityview.stopAnimating();
             HUD.hide();
             HUD.flash(HUDContentType.label("请求失败"));
         });
-        let a :String = "1";
        
-//        apiTop.requestTop(callback: { (responseSuccss) in
-//            print(responseSuccss);
-//        }, failCallBack: { (responseFail) in
-//            print(responseFail);
-//        });
+
     }
     
 }
+
+//MARK: ------  private Method --------
+
+extension FirstViewController{
+    
+    fileprivate func initMainTable(){
+        mainTable.register(UITableViewCell.self, forCellReuseIdentifier: tableviewID)
+    }
+}
+
+
+extension FirstViewController:UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        let count = newsListArr.count;
+        return count;
+    }
+    
+    
+    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+    
+    @available(iOS 2.0, *)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: tableviewID);
+      
+        let newsDatail: NewsDatailModel = self.newsListArr[indexPath.row];
+        cell.textLabel?.text = newsDatail.title;
+        
+//        let url = URL(string: newsDatail.url!)
+        let urlString = "http://wx3.sinaimg.cn/mw1024/b28b586fly1fdk99euvgqj20go0godj2.jpg"
+//        let urlString = newsDatail.url!;
+//        let url = URL(string: newsDatail.url!)
+        let url = URL(string: urlString)
+        print(urlString);
+        
+        
+
+        let imageView = cell.imageView;
+        imageView?.kf.setImage(with: url)
+//        cell.imageView?.image = UIImage(with)
+//        cell.imageView.kf.set
+
+        
+        return cell;
+    }
+    
+   
+}
+
+extension FirstViewController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        print("点击cell")
+    }
+}
+
 
