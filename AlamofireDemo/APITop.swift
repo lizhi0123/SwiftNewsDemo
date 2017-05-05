@@ -51,7 +51,7 @@ extension APITop{
                 //            let resultStr:String = resultString;
                 
                 let newsResult:NewsModel! = NewsModel(JSONString: resultStr);
-                print(newsResult) ;
+                print("request 返回值 + \(newsResult)") ;
                 
                 callback(newsResult);
                 
