@@ -85,7 +85,7 @@ extension FirstViewController{
 extension FirstViewController{
     
     fileprivate func initMainTable(){
-        mainTable.register(UITableViewCell.self, forCellReuseIdentifier: tableviewID)
+//        mainTable.register(UITableViewCell.self, forCellReuseIdentifier: tableviewID)
     }
 }
 
@@ -120,6 +120,7 @@ extension FirstViewController:UITableViewDataSource{
         let imageView = cell.imageView;
         let defaultImage = UIImage(named: "ImgDefaultSmall");
         imageView?.kf.setImage(with: url, placeholder: defaultImage, options: [KingfisherOptionsInfoItem.cacheMemoryOnly], progressBlock: nil, completionHandler: nil);
+        
 
 
         
