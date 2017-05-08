@@ -59,6 +59,8 @@ class NewsDatailModel: Mappable {
     var date:Date?
     var author_name:String?
     var url:String?
+    var thumbnail_pic_s:String?
+    
     
     /*
     "uniquekey":"e7b150d3e1ca9ceb46247657b9165022",
@@ -82,6 +84,7 @@ class NewsDatailModel: Mappable {
         date <- (map["date"],DateTransform());
         author_name <- map["author_name"];
         url <- map["url"];
+        thumbnail_pic_s <- map["thumbnail_pic_s"];
       
     }
 }

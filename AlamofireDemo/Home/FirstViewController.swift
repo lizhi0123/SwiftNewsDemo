@@ -85,7 +85,7 @@ extension FirstViewController{
 extension FirstViewController{
     
     fileprivate func initMainTable(){
-        mainTable.register(UITableViewCell.self, forCellReuseIdentifier: tableviewID)
+//        mainTable.register(UITableViewCell.self, forCellReuseIdentifier: tableviewID)
     }
 }
 
@@ -110,18 +110,18 @@ extension FirstViewController:UITableViewDataSource{
         cell.textLabel?.text = newsDatail.title;
         
 //        let url = URL(string: newsDatail.url!)
-        let urlString = "http://wx3.sinaimg.cn/mw1024/b28b586fly1fdk99euvgqj20go0godj2.jpg"
-//        let urlString = newsDatail.url!;
-//        let url = URL(string: newsDatail.url!)
-        let url = URL(string: urlString)
+//        let urlString = newsDatail.thumbnail_pic_s ?
+        let urlString = newsDatail.thumbnail_pic_s ?? "http://wx3.sinaimg.cn/mw1024/b28b586fly1fdk99euvgqj20go0godj2.jpg";
+        let url = URL(string: urlString) ;
         print(urlString);
         
         
 
         let imageView = cell.imageView;
-        imageView?.kf.setImage(with: url)
-//        cell.imageView?.image = UIImage(with)
-//        cell.imageView.kf.set
+        let defaultImage = UIImage(named: "ImgDefaultSmall");
+        imageView?.kf.setImage(with: url, placeholder: defaultImage, options: [KingfisherOptionsInfoItem.cacheMemoryOnly], progressBlock: nil, completionHandler: nil);
+        
+
 
         
         return cell;

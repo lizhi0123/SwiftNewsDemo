@@ -32,26 +32,18 @@ extension APITop{
         
     let topUrlStr = House.TopType;
     
-//    let topUrl:String ;
    let topUrl = "\(baseUrl)?type=\(topUrlStr)&key=\(appkey)";
     
         Alamofire.request(topUrl).responseString { (response) in
             
-//            print("resultString=\(response)");
             if(response.result.isSuccess){
                 
                 let reusultData = response.data;
                 
-                
-//                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:decryptObject options:NSJSONWritingPrettyPrinted error:nil ];
-//                NSString *jsonstr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                
-                
                 let resultStr:String! = String(data: reusultData!, encoding: .utf8);
-                //            let resultStr:String = resultString;
                 
                 let newsResult:NewsModel! = NewsModel(JSONString: resultStr);
-                print(newsResult) ;
+                print("request 返回值 + \(newsResult)") ;
                 
                 callback(newsResult);
                 
