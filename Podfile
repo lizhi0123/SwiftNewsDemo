@@ -11,6 +11,7 @@ target 'AlamofireDemo' do
    pod 'ObjectMapper', '~> 2.2.3'
    pod 'PKHUD', '~> 4.2.0'
    pod 'Kingfisher', '~> 3.6.0'
+   pod 'DGElasticPullToRefresh', '~> 1.1'
 
   target 'AlamofireDemoTests' do
     inherit! :search_paths
