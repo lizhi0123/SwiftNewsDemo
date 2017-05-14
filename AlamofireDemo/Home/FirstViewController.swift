@@ -9,6 +9,7 @@
 import UIKit
 import PKHUD
 import Kingfisher
+import CRRefresh
 
 
 class FirstViewController: UIViewController {
@@ -29,8 +30,13 @@ class FirstViewController: UIViewController {
         HUD.allowsInteraction = false
         
         initMainTable();
+        self.mainTable.cr.addHeadRefresh(animator: NormalHeaderAnimator()){ [weak self] in
+            self!.startRequestTop()
+        }
         
-        requestTop();
+        self.mainTable.cr.beginHeaderRefresh()
+        
+        
         
         
 //        requestTop();
@@ -49,7 +55,7 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController{
     
-    fileprivate func requestTop(){
+    fileprivate func startRequestTop(){
         
         HUD.show(.labeledProgress(title: nil, subtitle: "正在加载..."))
         
@@ -68,11 +74,13 @@ extension FirstViewController{
             self.mainTable.reloadData();
             
             HUD.hide();
+            self.mainTable.cr.endHeaderRefresh();
             
         }, failCallBack: { (responseFail) in
             print(responseFail);
             HUD.hide();
             HUD.flash(HUDContentType.label("请求失败"));
+            self.mainTable.cr.endHeaderRefresh();
         });
        
 
@@ -89,7 +97,7 @@ extension FirstViewController{
     }
 }
 
-
+//MARK: --------- UITableview Datasource -----------
 extension FirstViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
