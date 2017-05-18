@@ -15,13 +15,12 @@ import Alamofire
 typealias APITopCallBack = (_ responseNewsModel:NewsModel) -> Void;
 
 
-class APITop: NSObject {
+class APITop: API {
     
     override init() {
 
     }
     
-  
 }
 
 

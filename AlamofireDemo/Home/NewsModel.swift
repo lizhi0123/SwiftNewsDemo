@@ -53,7 +53,8 @@ class NewsResultModel: Mappable {
     }
 }
 
-class NewsDatailModel: Mappable {
+class NewsDatailModel: Mappable
+{
     
     var title:String?;
     var date:Date?

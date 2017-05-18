@@ -7,8 +7,12 @@
 //
 
 import UIKit
+//import NewsDatailModel
 
 class DetailViewController: UIViewController {
+    
+// 我靠属性
+    var newDatailModel:NewsDatailModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,4 +36,13 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
+
+//MARK: ---------  public method -----------
+
+extension DetailViewController {
+    public func setupInitWith(newsDatailModel:NewsDatailModel?){
+    
+        self.newDatailModel = newsDatailModel
+    }
 }

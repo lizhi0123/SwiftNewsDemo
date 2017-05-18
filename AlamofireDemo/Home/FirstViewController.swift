@@ -11,9 +11,11 @@ import PKHUD
 import Kingfisher
 import CRRefresh
 
+let ShowDetailControllerSegue:String = "ShowDetailControllerSegue";
+
+
 
 class FirstViewController: UIViewController {
-    
     
      let tableviewID:String! = "firstTableviewID";
     var newsListArr = [NewsDatailModel]();
@@ -47,6 +49,16 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let newsDatail: NewsDatailModel = self.newsListArr[indexPath.row];
+        if segue.identifier == ShowDetailControllerSegue{
+            let controller = segue.destination as! DetailViewController
+            controller.newDatailModel = (sender as? NewsDatailModel)!;
+        }
+        
+    }
+
     
 }
 
@@ -141,6 +153,12 @@ extension FirstViewController:UITableViewDataSource{
 extension FirstViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print("点击cell")
+//        self.mainTable!.deselectRow(at: indexPath, animated: true)
+        let newsDetailModel:NewsDatailModel! = self.newsListArr[indexPath.row];
+        
+        self.performSegue(withIdentifier: "ShowDetailControllerSegue", sender: newsDetailModel)
+        
+        
     }
 }
 
