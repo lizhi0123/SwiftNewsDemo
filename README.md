@@ -6,25 +6,23 @@
 * 点击cell 跳转到详情页 同时也把cell 的数据传递到详情页。
 
 ##效果
-***
 先上张效果图
 
 ![swiftRequest效果图.gif](http://upload-images.jianshu.io/upload_images/2384741-934ac10c0f2d3a93.gif?imageMogr2/auto-orient/strip)
 ##源码地址
-***
 想看源码的可以到[github](https://github.com/lizhi0123/SwiftRequestDemo) 上下载
 ##开发环境
-***
+
 * Xcode 8.3.2
 * Swift 3
 
 ##运行项目
-***
+
 在终端cd到你的项目路径 然后执行
 `pod install`
 
 ##使用的第三方框架
-***
+
 #####1.Alamofire 
  网络请求框架
 
