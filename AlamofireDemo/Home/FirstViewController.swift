@@ -51,11 +51,12 @@ class FirstViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let newsDatail: NewsDatailModel = self.newsListArr[indexPath.row];
+        
         if segue.identifier == ShowDetailControllerSegue{
             let controller = segue.destination as! DetailViewController
-            controller.newDatailModel = (sender as? NewsDatailModel)!;
+            controller.setupInitWith(newsDatailModel: sender as? NewsDatailModel)
         }
+        
         
     }
 
