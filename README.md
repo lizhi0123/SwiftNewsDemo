@@ -8,7 +8,7 @@
 ## 效果
 先上张效果图
 
-![swiftRequest效果图.gif](http://wx3.sinaimg.cn/mw690/b28b586fgy1ffqrznw63lg20ae0j47ik.gif)
+![swiftRequest效果图](http://wx3.sinaimg.cn/mw690/b28b586fgy1ffqrznw63lg20ae0j47ik.gif)
 ## 源码地址
 想看源码的可以到[github](https://github.com/lizhi0123/SwiftRequestDemo) 上下载
 ## 开发环境
